@@ -11,5 +11,6 @@ echo "Building for environment $1"
 
 rm -rf deployment || true
 
+docker run -v $PWD:/tmp tibbar/vortex:v1 -template /tmp/templates -output /tmp/deployment -varpath /tmp/environments/small.yaml
 
-vortex --template templates --output deployment -varpath ./environments/$1.yaml
+kubectl create -f deployment/
